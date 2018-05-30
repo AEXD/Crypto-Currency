@@ -93,7 +93,20 @@ class Blockchain {
 
     // Checks if each hash is valid and each chain is linked via hashes
     isChainValid() {
+        
+        for (let i = 1; i < this.chain.length; i++) {
+            if (this.chain[i].hash !== this.chain[i].calculateHash()) {
+              
+                return false;
+            }
+            console.log(this.chain[i].previousHash);
+            console.log(this.chain[i - 1].hash);
+            if (this.chain[i].previousHash !== this.chain[i - 1].hash) {
 
+               return false;
+            }
+        }
+        return true;
     }
 }
 
@@ -114,5 +127,14 @@ console.log('Mining...');
 GitCoin.minePendingTransactions("DanTheMan");
 
 console.log("DanTheMan's balance: " + GitCoin.getBalanceOfAddress("DanTheMan"));
+
+console.log("Is Chain Valid?: " + GitCoin.isChainValid());
+console.log(GitCoin.chain.length);
+
+GitCoin.chain[GitCoin.chain.length - 2].transactions[0].amount = 1000;
+GitCoin.chain[GitCoin.chain.length - 2].hash = GitCoin.chain[GitCoin.chain.length - 2].calculateHash();
+
+console.log("Is Chain Valid?: " + GitCoin.isChainValid());
+
 
 
