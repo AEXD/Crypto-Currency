@@ -110,31 +110,40 @@ class Blockchain {
     }
 }
 
-let GitCoin = new Blockchain();
-GitCoin.createTransaction(new Transaction("Buttface", "Fanus", 150));
-GitCoin.createTransaction(new Transaction("Fanus", "Cakewell", 75));
-GitCoin.createTransaction(new Transaction("Cakewell", "Buttface", 50));
+let ButtCoin = new Blockchain();
+ButtCoin.createTransaction(new Transaction("Buttface", "Fanus", 150));
+ButtCoin.createTransaction(new Transaction("Fanus", "Cakewell", 75));
+ButtCoin.createTransaction(new Transaction("Cakewell", "Buttface", 50));
 
 console.log('Mining...');
-GitCoin.minePendingTransactions("DanTheMan");
+ButtCoin.minePendingTransactions("DanTheMan");
 
-console.log("Buttface's balance: " + GitCoin.getBalanceOfAddress("Buttface"));
-console.log("Fanus's balance: " + GitCoin.getBalanceOfAddress("Fanus"));
-console.log("Cakewell's balance: " + GitCoin.getBalanceOfAddress("Cakewell"));
-console.log("DanTheMan's balance: " + GitCoin.getBalanceOfAddress("DanTheMan"));
+console.log("Buttface's balance: " + ButtCoin.getBalanceOfAddress("Buttface"));
+console.log("Fanus's balance: " + ButtCoin.getBalanceOfAddress("Fanus"));
+console.log("Cakewell's balance: " + ButtCoin.getBalanceOfAddress("Cakewell"));
+console.log("DanTheMan's balance: " + ButtCoin.getBalanceOfAddress("DanTheMan"));
 
 console.log('Mining...');
-GitCoin.minePendingTransactions("DanTheMan");
+ButtCoin.minePendingTransactions("DanTheMan");
 
-console.log("DanTheMan's balance: " + GitCoin.getBalanceOfAddress("DanTheMan"));
+console.log("DanTheMan's balance: " + ButtCoin.getBalanceOfAddress("DanTheMan"));
 
-console.log("Is Chain Valid?: " + GitCoin.isChainValid());
-console.log(GitCoin.chain.length);
+console.log("Is Chain Valid?: " + ButtCoin.isChainValid());
+console.log(ButtCoin.chain.length);
+/*
+ButtCoin.chain[ButtCoin.chain.length - 2].transactions[0].amount = 1000;
+ButtCoin.chain[ButtCoin.chain.length - 2].hash = ButtCoin.chain[ButtCoin.chain.length - 2].calculateHash();
+*/
 
-GitCoin.chain[GitCoin.chain.length - 2].transactions[0].amount = 1000;
-GitCoin.chain[GitCoin.chain.length - 2].hash = GitCoin.chain[GitCoin.chain.length - 2].calculateHash();
+ButtCoin.chain[ButtCoin.chain.length - 1].transactions[0].amount = 1000;
+ButtCoin.chain[ButtCoin.chain.length - 1].hash = ButtCoin.chain[ButtCoin.chain.length - 1].calculateHash();
 
-console.log("Is Chain Valid?: " + GitCoin.isChainValid());
+console.log("Is Chain Valid?: " + ButtCoin.isChainValid());
+
+console.log('Mining...');
+ButtCoin.minePendingTransactions("DanTheMan");
+
+console.log("Is Chain Valid?: " + ButtCoin.isChainValid());
 
 
 
